@@ -1,0 +1,26 @@
+import React from "react";
+import Link from "next/link";
+
+const Footer = () => {
+  return (
+    <>
+      <footer id="footer">
+        <div className="footernav">
+          <ul>
+            <li>
+              <Link href="/app">App</Link>
+            </li>
+            <li>
+              <Link href="/legal">Legal Notice</Link>
+            </li>
+            <li>
+              <Link href="/privacy">Privacy</Link>
+            </li>
+          </ul>
+        </div>
+      </footer>
+    </>
+  );
+};
+
+export default Footer;

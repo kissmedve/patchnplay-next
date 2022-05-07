@@ -1,3 +1,6 @@
+@import url('spectre.css');
+@import url('variables.css');
+
 html,
 body {
   padding: 0;
@@ -13,4 +16,889 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+/* ========= */
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #efede0;
+}
+#header {
+  position: fixed;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 100;
+  border-bottom: 1px solid #ccc;
+  height: 54px;
+}
+.hero-wrapper {
+  padding-top: 54px;
+}
+.wrapper {
+  background: #efede0;
+  padding-bottom: 3rem;
+  position: relative;
+  min-height: 100vh;
+}
+#main {
+  display: flex;
+  padding: 70px 20px;
+  background: #efede0;
+  /* height: 100vh; */
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 3rem;
+}
+
+/* Logo */
+
+#logo {
+  padding-left: 1rem;
+}
+#logo a {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+/* Navigation */
+
+.navbar {
+  position: relative;
+}
+#topnav {
+  padding-right: 1rem;
+  padding-left: 0.75rem;
+  height: 100vh;
+  position: absolute;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  overflow-y: scroll;
+  overflow: visible;
+}
+
+.nav {
+  display: flex;
+}
+.nav .btn.btn-link,
+.nav a {
+  color: #3b4351;
+  font-size: var(--font_14px);
+  text-transform: uppercase;
+}
+.nav .btn.btn-link span {
+  margin-left: 6px;
+}
+#toggler {
+  margin-top: 9px;
+  position: relative;
+}
+#toggler button {
+  border-color: transparent;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+}
+#toggler span {
+  display: block;
+  height: 3px;
+  width: 20px;
+  margin: 5px 0;
+  background-color: #4d4d4d;
+}
+
+@media (min-width: 0) and (max-width: 979px) {
+  #topnav {
+    transform: translate(100%, 0);
+    transition: transform 0.3s ease-in-out;
+  }
+  .nav {
+    flex-direction: column;
+    padding-top: 50px;
+  }
+  #toggler button {
+    left: -3rem;
+    transition: transform 0.3s ease-in-out;
+  }
+  #toggler span {
+    transform: translateY(0) rotate(0);
+    transition: transform 0.3s ease-in-out;
+  }
+  #toggler.toggled span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    transition: transform 0.3s ease-in-out;
+    transition-delay: 0.3s;
+    transition-property: transform;
+  }
+  #toggler.toggled span:nth-child(2) {
+    background-color: transparent;
+    transition: transform 0.3s ease-in-out;
+    transition-delay: 0.3s;
+    transition-property: transform;
+  }
+  #toggler.toggled span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    transition: transform 0.3s ease-in-out;
+    transition-delay: 0.3s;
+    transition-property: transform;
+  }
+  #topnav.active {
+    transform: translate(0, 0);
+    transition: transform 0.3s ease-in-out;
+  }
+  #topnav.active button {
+    left: 0;
+    right: 1.5rem;
+    transition-delay: 6s;
+  }
+}
+
+@media (min-width: 980px) {
+  #toggler {
+    display: none;
+  }
+  #topnav {
+    height: auto;
+    position: static;
+    background-color: transparent;
+    overflow-y: auto;
+  }
+  .nav {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+/* Square */
+
+#squares-container .square {
+  cursor: pointer;
+}
+.square {
+  width: 50px;
+  height: 50px;
+  display: block;
+  position: relative;
+}
+.square.covered {
+  background-color: transparent;
+}
+.square.covered .rect,
+.square.covered .hstdown,
+.square.covered .hstup {
+  display: none;
+}
+
+.square.rect svg .hstdown,
+.square.rect svg .hstup {
+  display: none;
+}
+.square.hstdown svg .rect,
+.square.hstdown svg .hstup {
+  display: none;
+}
+.square.hstup svg .rect,
+.square.hstup svg .hstdown {
+  display: none;
+}
+.square.sashing svg .rect,
+.square.sashing svg .hstup,
+.square.sashing svg .hstdown {
+  display: none;
+}
+
+.slider ul {
+  display: flex;
+}
+.slider li {
+  justify-content: center;
+  list-style: none;
+}
+.slider img {
+  width: 100px;
+  height: 100px;
+}
+.bigblock {
+  position: absolute;
+  z-index: 10;
+}
+
+/* squares grid */
+
+.grid-container {
+  position: relative;
+}
+.bigblocks-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.squares-settings {
+  padding: 0;
+  border: none;
+  display: block;
+}
+.colhead {
+  display: flex;
+  flex-direction: column;
+}
+.rowhead {
+  display: flex;
+}
+.rowhead.colhead {
+  position: relative;
+}
+.info-button,
+.border-styler {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  border: 2px solid #d3d1d1;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.info-button {
+  top: 0;
+  left: 0;
+  background: url(img/icon-i-noborder-40-c.svg) 0 0 no-repeat;
+  border-radius: 50%;
+}
+.border-styler {
+  top: 45px;
+  left: 45px;
+  background: #f5f3e6 url(img/icon-b-noborder-40.svg) 0 0 no-repeat;
+}
+.colhead .squares-settings {
+  height: 30px;
+}
+.rowhead .squares-settings {
+  width: 30px;
+}
+.styling-dropdown .edit-border,
+.styling-dropdown .add-border,
+.styling-dropdown .delete-border {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #d3d1d1;
+  border-radius: 3px;
+}
+.styling-dropdown .border-icon {
+  margin-right: 3px;
+  border-top: 1px solid transparent;
+  border-left: 1px solid transparent;
+}
+.squares-settings button span,
+.squares-settings > span,
+.edit-border > span,
+.add-border > span,
+.delete-border > span,
+.border-styler > span,
+.info-button > span {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -9999px;
+}
+button.squares-settings,
+.squares-settings > button {
+  border: 2px solid #d3d1d1;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.squares-settings.col-sashing,
+.squares-settings.row-sashing {
+  position: relative;
+}
+.squares-settings.col-sashing .switch-sashing {
+  background: #f5f3e6 url(img/icon-s-wide-noborder.svg) no-repeat center center;
+  width: 100%;
+  height: 100%;
+}
+.squares-settings.row-sashing .switch-sashing {
+  background: #f5f3e6 url(img/icon-s-high-noborder.svg) no-repeat center center;
+  width: 100%;
+  height: 100%;
+}
+.squares-settings.add-column {
+  background: #f5f3e6 url(img/icon-plus-wide-noborder.svg) no-repeat center
+    center;
+}
+.squares-settings.add-row {
+  background: #f5f3e6 url(img/icon-plus-high-noborder.svg) no-repeat center
+    center;
+}
+.squares-settings.delete-column {
+  background: #f5f3e6 url(img/icon-minus-wide-noborder.svg) no-repeat center
+    center;
+}
+.squares-settings.delete-row {
+  background: #f5f3e6 url(img/icon-minus-high-noborder.svg) no-repeat center
+    center;
+}
+.styling-dropdown .edit-border {
+  background: url(img/icon-edit-noborder.svg) no-repeat center center;
+}
+.styling-dropdown .add-border {
+  background: url(img/icon-plus-noborder.svg) no-repeat center center;
+}
+.styling-dropdown .delete-border {
+  background: url(img/icon-minus-noborder.svg) no-repeat center center;
+}
+
+/* SquareStyler and Color Settings
+  ================================= */
+.styling-dropdown {
+  position: absolute;
+  z-index: 100;
+  border-radius: 8px;
+}
+.styling-dropdown .card {
+  position: relative;
+}
+.styling-dropdown .btn.btn-clear {
+  position: absolute;
+  top: 0.2rem;
+  right: 0.3rem;
+}
+.styling-dropdown .card {
+  padding-top: 0.7rem;
+}
+.styling-dropdown span,
+.styling-dropdown .swatches-title {
+  white-space: nowrap;
+  font-size: var(--font_14px);
+  margin-left: 2px;
+}
+.styling-dropdown input.square-type,
+.styling-dropdown input.square-type:focus,
+.styling-dropdown input.square-type:checked,
+.calculate-fabrics input.fabric-width,
+.calculate-fabrics input.fabric-width:focus,
+.calculate-fabrics input.fabric-width:checked,
+.calculate-fabrics input.square-size,
+.calculate-fabrics input.square-size:focus,
+.calculate-fabrics input.square-size:checked,
+.calculate-fabrics input.seam-allowance,
+.calculate-fabrics input.seam-allowance:focus,
+.calculate-fabrics input.seam-allowance:checked {
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.form-radio input:checked + .form-icon::before {
+  content: none;
+}
+.styling-dropdown .form-icon {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 20%;
+  border: 0.2rem solid transparent;
+}
+.styling-dropdown .form-radio input.square-type:checked + .form-icon,
+.styling-dropdown .form-radio input.square-type:focus + .form-icon,
+.calculate-fabrics .form-radio input.fabric-width:checked + .form-icon,
+.calculate-fabrics .form-radio input.fabric-width:focus + .form-icon,
+.calculate-fabrics .form-radio input.square-size:checked + .form-icon,
+.calculate-fabrics .form-radio input.square-size:focus + .form-icon,
+.calculate-fabrics .form-radio input.seam-allowance:checked + .form-icon,
+.calculate-fabrics .form-radio input.seam-allowance:focus + .form-icon {
+  border-color: hsla(91, 99%, 42%, 0.6);
+}
+.calculate-fabrics .form-radio input.fabric-width:checked + .form-icon,
+.calculate-fabrics .form-radio input.fabric-width:focus + .form-icon,
+.calculate-fabrics .form-radio input.square-size:checked + .form-icon,
+.calculate-fabrics .form-radio input.square-size:focus + .form-icon,
+.calculate-fabrics .form-radio input.seam-allowance:checked + .form-icon,
+.calculate-fabrics .form-radio input.seam-allowance:focus + .form-icon {
+  border-width: 0.25rem;
+}
+.styling-dropdown .form-radio.rect .form-icon,
+.styling-dropdown .form-radio.rect input:focus + .form-icon,
+.styling-dropdown .form-radio.rect input:checked + .form-icon {
+  background: hsl(0, 0%, 60%) url(img/hst-squ.svg) no-repeat center center;
+}
+.styling-dropdown .form-radio.hst-down .form-icon,
+.styling-dropdown .form-radio.hst-down input:focus + .form-icon,
+.styling-dropdown .form-radio.hst-down input:checked + .form-icon {
+  background: hsl(0, 0%, 60%) url(img/hst-down.svg) no-repeat center center;
+}
+.styling-dropdown .form-radio.hst-up .form-icon,
+.styling-dropdown .form-radio.hst-up input.square-type:focus + .form-icon,
+.styling-dropdown .form-radio.hst-up input.square-type:checked + .form-icon {
+  background: hsl(0, 0%, 60%) url(img/hst-up.svg) no-repeat center center;
+}
+.styling-dropdown .form-radio.hst-bigblock .form-icon,
+.styling-dropdown .form-radio.hst-bigblock input.square-type:focus + .form-icon,
+.styling-dropdown
+  .form-radio.hst-bigblock
+  input.square-type:checked
+  + .form-icon {
+  background: hsl(0, 0%, 60%) url(img/hst-bigblock.svg) no-repeat center center;
+}
+.calculate-fabrics .form-table {
+  margin-bottom: 1.5rem;
+}
+.calculate-fabrics .form-radio.fabric-width .form-icon,
+.calculate-fabrics .form-radio.fabric-width input:focus + .form-icon,
+.calculate-fabrics .form-radio.fabric-width input:checked + .form-icon,
+.calculate-fabrics .form-radio.square-size .form-icon,
+.calculate-fabrics .form-radio.square-size input:focus + .form-icon,
+.calculate-fabrics .form-radio.square-size input:checked + .form-icon,
+.calculate-fabrics .form-radio.seam-allowance .form-icon,
+.calculate-fabrics .form-radio.seam-allowance input:focus + .form-icon,
+.calculate-fabrics .form-radio.seam-allowance input:checked + .form-icon {
+  background: hsl(0, 0%, 60%) url(img/radio.svg) no-repeat center center;
+}
+.calculate-fabrics .form-radio.fabric-width .form-icon,
+.calculate-fabrics .form-radio.square-size .form-icon,
+.calculate-fabrics .form-radio.seam-allowance .form-icon {
+  border-radius: 50%;
+  width: 0.8rem;
+  height: 0.8rem;
+  top: 0.15rem;
+}
+.calculate-fabrics .form-radio.fabric-width .form-icon {
+  left: 2rem;
+}
+.calculate-fabrics .form-radio.fabric-width,
+.calculate-fabrics .form-radio.square-size,
+.calculate-fabrics .form-radio.seam-allowance {
+  padding: 0 0.4rem 0 1.2rem;
+  line-height: 1.1rem;
+  min-height: 1.1rem;
+}
+.calculate-fabrics .form-header,
+.calculate-fabrics .form-row,
+.calculate-fabrics .row-header,
+.calculate-fabrics .row-body {
+  display: flex;
+}
+.calculate-fabrics .form-row,
+.calculate-fabrics .col,
+.calculate-fabrics .colorname,
+.calculate-fabrics .colorbg {
+  margin: 0.1rem 0;
+  column-gap: 0.2rem;
+}
+.calculate-fabrics .col {
+  min-width: 5rem;
+  text-align: center;
+}
+.calculate-fabrics .colorname {
+  min-width: 3.5rem;
+  text-align: left;
+}
+.calculate-fabrics .colorbg {
+  min-width: 2rem;
+  text-align: left;
+}
+.calculate-fabrics .form-row span {
+  display: block;
+  text-indent: -9999rem;
+  width: 0;
+  height: 0;
+}
+.form-group.sashing-number,
+.form-group.border-width {
+  display: flex;
+}
+.sashing-number input,
+.border-width input {
+  width: 4rem;
+}
+.sashing-number input,
+.sashing-number button,
+button.sashing-switch,
+.border-width input,
+button.border-add {
+  font-size: var(--font_14px);
+}
+.sashing-number button {
+  margin-left: 0.25rem;
+}
+.explanation {
+  font-size: var(--font_12px);
+}
+.expl {
+  font-size: var(--font_14px);
+  width: 3rem;
+}
+.styling-dropdown button.swatch,
+.colors button.swatch,
+.colors .swatch.current-color,
+.colors .swatch.remove-color {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: inline-block;
+  opacity: 1;
+  border: 2px solid transparent;
+}
+.styling-dropdown button.swatch {
+  cursor: pointer;
+}
+.colors .swatch.current-color,
+.colors .swatch.remove-color {
+  margin-right: 0.5rem;
+  position: relative;
+  top: 0.4rem;
+}
+.styling-dropdown button.swatch:focus,
+.styling-dropdown button.swatch:active,
+.colors button.swatch:focus,
+.colors button.swatch:active {
+  outline: none;
+  transform: scale(1.2, 1.2);
+}
+.styling-dropdown .swatches,
+.colors .swatches {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 6.25rem;
+  margin-top: 0.2rem;
+}
+.styling-dropdown .color-swatches {
+  margin: 0.75rem 0 0.5rem;
+}
+.styling-dropdown .swatches-group,
+.colors .swatches-group {
+  margin-bottom: 0.2rem;
+}
+.styling-dropdown .selected-gallery {
+  margin: 0.5rem 0;
+  width: 9.5rem;
+}
+.styling-dropdown .h5,
+.colors .h5,
+.calculate-fabrics .h5 {
+  font-size: var(--font_18px);
+  text-transform: uppercase;
+}
+.styling-dropdown .h6,
+.colors .h6,
+.calculate-fabrics .h6 {
+  font-size: var(--font_13px);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.styling-dropdown.sashing .h6 {
+  margin-top: 0.75rem;
+}
+.styling-dropdown.sashing .h6:first-child {
+  margin-top: 0;
+}
+.styling-dropdown .bigblock-width {
+  display: flex;
+  padding: 0.3rem 0;
+}
+.bigblock-width input {
+  width: 3.5rem;
+  margin-right: 0.25rem;
+}
+.bigblock-size {
+  margin-top: 1rem;
+}
+.styler-btn {
+  font-size: var(--font_14px);
+  background: #f5f5f5;
+  border: 2px solid #9ac997;
+  border-radius: 6px;
+  color: #2f2f2f;
+}
+.styler-btn:hover,
+.styler-btn:focus {
+  border: 2px solid #8cbd89;
+  background: #e4e3e3;
+}
+.calculate.styler-btn,
+.print.styler-btn {
+  margin: 1.5rem 0;
+}
+.print.styler-btn a {
+  color: var(--grey_text);
+  text-decoration: none;
+}
+.bigblock-rotate .btn-icon {
+  width: 1rem;
+  height: 1rem;
+  display: block;
+}
+.bigblock-rotate .btn {
+  margin-top: 0.2rem;
+  margin-right: 0.3rem;
+}
+.bigblock-rotate .rotate-left .btn-icon {
+  background: url(img/icon-rotate-left.svg) center center no-repeat;
+}
+.bigblock-rotate .rotate-right .btn-icon {
+  background: url(img/icon-rotate-right.svg) center center no-repeat;
+}
+.swatch-action {
+  padding: 0.3rem 0;
+  margin-bottom: 1rem;
+}
+.border-button-group {
+  display: flex;
+}
+.calculate-fabrics .form-table {
+  overflow-x: auto;
+}
+.popup {
+  /* glassy border on styler */
+  padding: 0.85rem;
+  background: rgba(209, 209, 209, 0.8);
+}
+.styling-dropdown .pointer {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 100;
+}
+.styling-dropdown .pointer.top-left {
+  border-top: 8px solid transparent;
+  border-right: 8px solid #fff;
+  border-bottom: 8px solid transparent;
+  transform: rotate(45deg);
+}
+.styling-dropdown .pointer.top-right {
+  border-top: 8px solid transparent;
+  border-right: 8px solid #fff;
+  border-bottom: 8px solid transparent;
+  transform: rotate(135deg);
+}
+.styling-dropdown .pointer.left {
+  border-top: 8px solid transparent;
+  border-right: 8px solid #fff;
+  border-bottom: 8px solid transparent;
+}
+.styling-dropdown .pointer.right {
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid #fff;
+}
+.styling-dropdown .pointer.bottom-left {
+  border-top: 8px solid transparent;
+  border-right: 8px solid #fff;
+  border-bottom: 8px solid transparent;
+  transform: rotate(-45deg);
+}
+.styling-dropdown .pointer.bottom-right {
+  border-top: 8px solid transparent;
+  border-right: 8px solid #fff;
+  border-bottom: 8px solid transparent;
+  transform: rotate(-135deg);
+}
+
+/* Modal */
+.modal-container {
+  max-height: 90vh;
+}
+.modal:before {
+  content: '';
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Premades Gallery */
+.big-blocks,
+.selected-blocks,
+.selected-gallery {
+  display: flex;
+  flex-wrap: wrap;
+}
+.gallery .premade {
+  width: 50px;
+  margin: 5px;
+  font-size: 0;
+  cursor: pointer;
+}
+.selected-gallery .premade {
+  width: 33px;
+  margin: 2px;
+  font-size: 0;
+  cursor: pointer;
+}
+.selected-gallery .premade.active {
+  transform: scale(1.2);
+}
+.filters {
+  margin-bottom: 0.5rem;
+}
+.form-select-title {
+  font-size: var(--font_14px);
+  text-transform: uppercase;
+}
+.gallery .h6 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: var(--font_14px);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.gallery.selected .h6 {
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+}
+.border {
+  padding: 20px;
+}
+.borders-underlay {
+  display: inline-block;
+  position: absolute;
+  top: 90px;
+  left: 90px;
+}
+
+/* InfoModal */
+
+.figure img {
+  border: 1px solid #c1c1c1;
+  margin: 1.5rem 0;
+}
+.info-wrapper .info-number {
+  display: inline-block;
+  margin-right: 0.5rem;
+  line-height: 1.5rem;
+  position: relative;
+  top: 0px;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 3px solid #66c229;
+  border-radius: 50%;
+  font-size: var(--font_12px);
+  font-weight: 700;
+  text-align: center;
+}
+.info-wrapper .h6 {
+  font-size: var(--font_14px);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.info-wrapper p {
+  margin-left: 2rem;
+}
+.info-wrapper ol {
+  list-style-type: lower-latin;
+  margin: 0 2rem 1.2rem;
+}
+.info-wrapper li {
+  list-style-position: outside;
+}
+
+/* Toast (messages) */
+
+.toast {
+  position: relative;
+  padding-top: 1.25rem;
+}
+.bigblock.styling-dropdown .toast,
+.swatch-action .toast {
+  margin-top: 1rem;
+}
+.toast p {
+  font-size: --font_14px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.pagination li {
+  margin: 0 0.2rem;
+}
+.pagination button:hover,
+.pagination button:focus {
+  cursor: pointer;
+}
+
+/* Landing page */
+
+.landing .columns {
+  align-items: center;
+}
+.landing .column {
+  padding: 3rem 2rem;
+}
+.landing .container,
+.hero .container {
+  max-width: 1024px;
+}
+.hero h1 {
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  line-height: 1.1em;
+}
+.hero .minor {
+  font-size: 1rem;
+}
+.landing h2 {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  color: #343434;
+}
+.landing .lead-copy h2 {
+  font-size: 1.6rem;
+}
+.landing .lead-copy p {
+  font-size: 1rem;
+  line-height: 1.3em;
+}
+.landing .column ul {
+  margin-left: 0;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+}
+.action-buttons .btn.btn-lg {
+  height: 3.5rem;
+  padding: 0.7rem 2rem;
+}
+
+.btn.btn-success {
+  background-color: #4e9908;
+}
+.btn.btn-success:hover,
+.btn.btn-success:focus {
+  background-color: #59b106;
+}
+.btn-success a {
+  color: #fff;
+  text-decoration: none;
+}
+#footer {
+  background: #333;
+}
+#footer ul {
+  display: flex;
+  justify-content: center;
+  column-gap: 1.5rem;
+  margin-top: 0;
+}
+#footer li {
+  list-style-type: none;
+  margin-top: 0;
+}
+#footer a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #c3c3c3;
+  display: block;
+  line-height: 3rem;
+  font-size: var(--font_14px);
 }
