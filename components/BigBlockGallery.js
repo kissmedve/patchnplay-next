@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect, useCallback } from "react";
 import elementBlocks from "../data/elementBlocks";
 import { BigBlocksContext, BigBlocksContextDemo } from "./BigBlocksContext";
 import SVGBlock from "./SVGBlock";
@@ -20,11 +20,13 @@ const BigBlockGallery = ({ param }) => {
   // filters
   const filtered1 =
     filters.rowCol !== ""
-      ? elementBlocks.filter((el) => el.rowCol === Number(filters.rowCol))
+      ? elementBlocks.filter(
+          (el) => Number(el.rowCol) === Number(filters.rowCol)
+        )
       : elementBlocks;
   const filtered2 =
     filters.colours !== ""
-      ? filtered1.filter((el) => el.colours === Number(filters.colours))
+      ? filtered1.filter((el) => Number(el.colours) === Number(filters.colours))
       : filtered1;
   const filtered3 =
     filters.elements !== ""
@@ -34,16 +36,16 @@ const BigBlockGallery = ({ param }) => {
               ? "mixed"
               : el.elements.includes("special")
               ? "special"
-              : el.elements.includes("rect")
+              : el.elements.length === 1 && el.elements.includes("rect")
               ? "rect"
-              : el.elements.includes("hst")
+              : el.elements.length === 1 && el.elements.includes("hst")
               ? "hst"
               : "";
           return elElements === filters.elements;
         })
       : filtered2;
 
-  const blocksPerView = 27;
+  const blocksPerView = 200;
   let currentPageList = filtered3.slice(
     blocksPerView * (page - 1),
     blocksPerView * page
@@ -84,7 +86,7 @@ const BigBlockGallery = ({ param }) => {
     .map((block) => (
       <div
         className="premade"
-        key={block.id}
+        key={block.orderId}
         onClick={() => deleteBigBlock(block.id)}
       >
         <SVGBlock
@@ -141,6 +143,7 @@ const BigBlockGallery = ({ param }) => {
                 <option value="3">3 x 3</option>
                 <option value="4">4 x 4</option>
                 <option value="5">5 x 5</option>
+                <option value="6">6 x 6</option>
               </select>
             </div>
 
