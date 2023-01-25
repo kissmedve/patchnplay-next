@@ -12,7 +12,7 @@ export default function Legal() {
 
       <Header />
 
-      <main id="main" class="non-app legal">
+      <main id="main" className="non-app legal">
         <div className="container">
           <h1 className="title">Impressum</h1>
           <p>Ursula Gottschall</p>

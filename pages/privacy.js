@@ -12,7 +12,7 @@ export default function Privacy() {
 
       <Header />
 
-      <main id="main" class="non-app legal">
+      <main id="main" className="non-app legal">
         <div className="container">
           <h1 className="title">Privacy / Data Protection</h1>
         </div>

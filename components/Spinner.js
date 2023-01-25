@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import pnpSpinner from "../public/icons/pnp-spinner.svg";
 
 function Spinner() {
