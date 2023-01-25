@@ -678,9 +678,9 @@ export default function Documentation() {
               </div>
               <div className="column col-md-12 col-lg-6 col-7">
                 <p>
-                  Squares contained in a sashing row or sashing column can"t be
-                  handled individually, with one exception: the sashing cross,
-                  which is the square where row and column meet.
+                  Squares contained in a sashing row or sashing column
+                  can&apos;t be handled individually, with one exception: the
+                  sashing cross, which is the square where row and column meet.
                 </p>
 
                 <p>
@@ -827,8 +827,8 @@ export default function Documentation() {
                 <h3>Big Block on Sashing Cross</h3>
                 <p>
                   A special styling option for a sashing cross is to cover it
-                  with a Big Block, provided that the square's width and height
-                  are equal.
+                  with a Big Block, provided that the square&apos;s width and
+                  height are equal.
                 </p>
                 <p>
                   Apart from resizing, there are no restrictions. You can choose
@@ -923,10 +923,10 @@ export default function Documentation() {
               </div>
               <div className="column col-md-12 col-lg-6 col-7">
                 <p>
-                  Pause your work at any time. Click the "Download" button and
-                  save what you have. (Your results will be packed in a .json
-                  file which upon re-upload will produce the graphic result you
-                  left.)
+                  Pause your work at any time. Click the &quot;Download&quot;
+                  button and save what you have. Your results will be packed in
+                  a .json file which upon re-upload will produce the graphic
+                  result you left.
                 </p>
               </div>
             </div>
@@ -951,8 +951,9 @@ export default function Documentation() {
               </div>
               <div className="column col-md-12 col-lg-6 col-7">
                 <p>
-                  Clicking the "Upload" button will produce a dialog that lets
-                  you upload the work (the .json file) you downloaded earlier.
+                  Clicking the &quot;Upload&quot; button will produce a dialog
+                  that lets you upload the work (the .json file) you downloaded
+                  earlier.
                 </p>
                 <p>
                   You can easily work on multiple projects in parallel - just
@@ -983,10 +984,10 @@ export default function Documentation() {
                 <p>
                   Depending on the size of your project, but also on the size of
                   your screen, you might not be able to view the whole work
-                  without scrolling. That's where the preview function comes in
-                  handy. Clicking the "Preview" button will give you an overlay
-                  with a view of your work compressed inside the limits of your
-                  screen.{" "}
+                  without scrolling. That&apos;s where the preview function
+                  comes in handy. Clicking the &quot;Preview&quot; button will
+                  give you an overlay with a view of your work compressed inside
+                  the limits of your screen.{" "}
                 </p>
               </div>
             </div>
@@ -1012,17 +1013,17 @@ export default function Documentation() {
               <div className="column col-md-12 col-lg-6 col-7">
                 <p>
                   When you are done designing you want to know how much fabric
-                  you'll need. Just hit the "Calculate" button and fill in the
-                  form.
+                  you&apos;ll need. Just hit the &quot;Calculate&quot; button
+                  and fill in the form.
                 </p>
                 <p>
                   Every colour you included in your design is represented here.
-                  Choose the fabric width that's closest to what your piece is
-                  or what you will presumably be able to buy.{" "}
+                  Choose the fabric width that&apos;s closest to what your piece
+                  is or what you will presumably be able to buy.{" "}
                 </p>
                 <p>
-                  Then select the real life size the "plan squares" will
-                  translate into.
+                  Then select the real life size the &quot;plan squares&quot;
+                  will translate into.
                 </p>
                 <p>
                   And finally select the seam allowance you want to employ. Opt
@@ -1044,11 +1045,11 @@ export default function Documentation() {
               </div>
               <div className="column col-md-12 col-lg-6 col-7">
                 <p>
-                  Upon hitting "Calculate Fabric Requirements" you will be
-                  provided with a list of measurements, along with a visual
-                  representation of the number of blocks counted per colour and
-                  size. Half Square Triangles are consolidated into Squares, if
-                  possible.
+                  Upon hitting &quot;Calculate Fabric Requirements&quot; you
+                  will be provided with a list of measurements, along with a
+                  visual representation of the number of blocks counted per
+                  colour and size. Half Square Triangles are consolidated into
+                  Squares, if possible.
                 </p>
               </div>
             </div>
