@@ -36,10 +36,12 @@ const AddColumn = ({ colId, squareWidth, param }) => {
         let coveringBigBlock = insertedBigBlocks.find(
           (ins) => ins.anchorSquare === currentSqu.bigBlockAnchor
         );
-        let covAnchorCol = Number(coveringBigBlock.anchorSquare.split("-")[1]);
+        let covAnchorCol = parseInt(
+          coveringBigBlock.anchorSquare.split("-")[1]
+        );
         if (
           currentSqu.col <
-          covAnchorCol + Number(coveringBigBlock.stretchSquares) - 1
+          covAnchorCol + parseInt(coveringBigBlock.stretchSquares) - 1
         ) {
           squsCovered += 1;
         }
@@ -83,7 +85,7 @@ const AddColumn = ({ colId, squareWidth, param }) => {
           // shift anchor location of any BigBlock right of the new column
           if (squarez[i][k].col > colId && squarez[i][k].covered === true) {
             let anchorSplit = squarez[i][k].bigBlockAnchor.split("-");
-            anchorSplit[1] = Number(anchorSplit[1]) + 1;
+            anchorSplit[1] = parseInt(anchorSplit[1]) + 1;
             let rejoinedAnchor = anchorSplit.join("-");
             squarez[i][k].bigBlockAnchor = rejoinedAnchor;
           }

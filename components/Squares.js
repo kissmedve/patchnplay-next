@@ -40,7 +40,7 @@ const Squares = ({ param }) => {
   const [windowWidth, setWindowWidth] = useState();
 
   // check window width upon resizing
-  // TODO: add debounce funtion
+  // TODO: add debounce function?
   useEffect(() => {
     let currentClientWidth = document.body.clientWidth;
 
@@ -64,6 +64,10 @@ const Squares = ({ param }) => {
     .reduce((acc, curr) => acc + curr, 0);
   let bordersLeftWidth = borders
     .map((border) => border.widthLeft)
+    .reduce((acc, curr) => acc + curr, 0);
+
+  let bordersBottomWidth = borders
+    .map((border) => border.widthBottom)
     .reduce((acc, curr) => acc + curr, 0);
 
   // calculate grid columns width
@@ -98,6 +102,11 @@ const Squares = ({ param }) => {
   gridRows[0] += bordersTopWidth * borderBaseWidth;
 
   sashingHeights.map((height) => gridRows.push(height * squareWidth));
+  let containerHeightNumber =
+    gridRows.reduce((prev, curr) => prev + curr) +
+    bordersBottomWidth * borderBaseWidth;
+  let containerHeight = containerHeightNumber + "px";
+
   let gridRowsStyle = gridRows.map((row) => row + "px").join(" ");
 
   // build squares grid container
@@ -107,6 +116,7 @@ const Squares = ({ param }) => {
       gridTemplateColumns: gridColumnsStyle,
       gridTemplateRows: gridRowsStyle,
       width: containerWidth,
+      height: containerHeight,
     };
     return (
       <div id="squares-container" style={styles}>
@@ -115,7 +125,6 @@ const Squares = ({ param }) => {
     );
   };
 
-  // define offsets of inserted BigBlocks related to squares grid, build them
   const insertedBlocksOverlay = () => {
     let overlayBlocks = insertedBigBlocks.map((block) => {
       let anchor = block.anchorSquare.split("-");
@@ -131,36 +140,33 @@ const Squares = ({ param }) => {
         90;
 
       return (
-        <>
-          <div
-            className="bigblock"
-            key={`${block.anchorSquare}-bb`}
-            style={{
-              position: "absolute",
-              left: widthOffset + "px",
-              top: heightOffset + "px",
-              width: block.stretchSquares * squareWidth + "px",
-              height: block.stretchSquares * squareWidth + "px",
-              background: "rgba(0,0,0,0.7)",
-            }}
-            onClick={(event) => openBiggBlockStyler(block.anchorSquare)(event)}
-          >
-            <SVGBlock
-              anchorSquare={block.anchorSquare}
-              rowCol={block.rowCol}
-              blockId={block.elementBlocksId}
-              color1={block.color1}
-              color2={block.color2}
-              color3={block.color3}
-              squareWidth={squareWidth}
-              key={`${block.anchorSquare}-svg`}
-              rotated={block.rotated}
-            />
-          </div>
-        </>
+        <div
+          className="bigblock"
+          key={`${block.anchorSquare}-bb`}
+          style={{
+            position: "absolute",
+            left: widthOffset + "px",
+            top: heightOffset + "px",
+            width: block.stretchSquares * squareWidth + "px",
+            height: block.stretchSquares * squareWidth + "px",
+            background: "rgba(0,0,0,0.7)",
+          }}
+          onClick={(event) => openBiggBlockStyler(block.anchorSquare)(event)}
+        >
+          <SVGBlock
+            anchorSquare={block.anchorSquare}
+            rowCol={block.rowCol}
+            blockId={block.elementBlocksId}
+            color1={block.color1}
+            color2={block.color2}
+            color3={block.color3}
+            squareWidth={squareWidth}
+            rotated={block.rotated}
+          />
+        </div>
       );
     });
-    return <>{overlayBlocks}</>;
+    return <div className="bigblocks-container">{overlayBlocks}</div>;
   };
 
   const openSashColStyler = (id) => (event) => {

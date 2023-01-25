@@ -9,7 +9,6 @@ const DrawFabrics = ({ drawPacks }) => {
         ? drawPacks.map((pack) => {
             return (
               <div key={`pack-${pack[0]}`}>
-                <div className="test">test</div>
                 {/* colour heading */}
                 <div style={{ marginTop: "1.5rem" }}>
                   <span

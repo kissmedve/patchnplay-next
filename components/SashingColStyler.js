@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect, useCallback } from "react";
 import { StylersContext } from "./StylersContext";
 import { SquaresContext, SquaresContextDemo } from "./SquaresContext";
 import Palette from "./Palette";
+import Message from "./Message";
 import { rightDistance } from "../utils/stylerDistance";
 import {
   leftOffset,
@@ -30,11 +31,15 @@ const SashingColStyler = ({ rowCol, id, param }) => {
   const [appliedSashingWidth, setAppliedSashingWidth] = useState(
     sashingWidths[id]
   );
+
+  const [messageIsActive, setMessageIsActive] = useState(false);
+  const [messageText, setMessageText] = useState("");
+
   const [stylerRightDistance, setStylerRightDistance] = useState(null);
   const [stylerLeftDistance, setStylerLeftDistance] = useState(null);
 
   // measurements width
-  const stylerWidth = 208;
+  const stylerWidth = 248;
 
   const setDistanceValue = useCallback(() => {
     let stylRightDistance = rightDistance(
@@ -59,16 +64,24 @@ const SashingColStyler = ({ rowCol, id, param }) => {
     setInputSashingWidth(Number(event.target.value));
   };
 
-  const switchToSashing = (event) => {
-    // check if any square on the column is covered by a BigBlock
-    let isSquCovered = squares
+  // check if any square on the column is covered by a BigBlock
+  const isSquCovered = () => {
+    return squares
       .map((squs) => {
         return squs.some((squ) => squ.col === id && squ.covered === true);
       })
       .some((el) => el === true);
+  };
 
-    // only switch to sashing, if not covered
-    if (!isSquCovered) {
+  const switchToSashing = (event) => {
+    // only switch to sashing, if no square is covered
+    if (isSquCovered()) {
+      setMessageText(
+        "No BigBlocks allowed on sashings (except on a sashing cross)."
+      );
+      setMessageIsActive(true);
+      return;
+    } else {
       let squarez = squares;
       for (let i = 0; i < squarez.length; i++) {
         for (let k = 0; k < cols.length; k++) {
@@ -82,14 +95,14 @@ const SashingColStyler = ({ rowCol, id, param }) => {
             squarez[i][k].sashing = true;
           }
         }
+
+        let onSashingCols = sashingCols.map((sashCol, index) => {
+          return index === id ? (sashCol = true) : sashCol;
+        });
+
+        updateSashingCols(onSashingCols);
+        updateSquares(squarez);
       }
-
-      let onSashingCols = sashingCols.map((sashCol, index) => {
-        return index === id ? (sashCol = true) : sashCol;
-      });
-
-      updateSashingCols(onSashingCols);
-      updateSquares(squarez);
     }
   };
 
@@ -103,6 +116,16 @@ const SashingColStyler = ({ rowCol, id, param }) => {
     });
 
     let squarezz = squares;
+
+    // if a BigBlock is sitting on a crossing, it has to be removed first
+    if (isSquCovered()) {
+      setMessageText(
+        "Remove the BigBlock first before switching back to squares."
+      );
+      setMessageIsActive(true);
+      return;
+    }
+
     for (let i = 0; i < squarezz.length; i++) {
       for (let k = 0; k < cols.length; k++) {
         // unmark all squares of the sashing column,
@@ -128,11 +151,15 @@ const SashingColStyler = ({ rowCol, id, param }) => {
   };
 
   const applySashingWidth = (event) => {
-    let onSashingWidths = sashingWidths.map((sashWidth, index) => {
-      return index === id ? (sashWidth = inputSashingWidth) : sashWidth;
-    });
-
     let sashSquares = squares;
+
+    // if a BigBlock is sitting on a crossing, it has to be removed first
+    if (isSquCovered()) {
+      setMessageText("Remove the BigBlock first before changing the width.");
+      setMessageIsActive(true);
+      return;
+    }
+
     for (let i = 0; i < sashSquares.length; i++) {
       for (let k = 0; k < cols.length; k++) {
         if (sashSquares[i][k].col === id) {
@@ -141,9 +168,17 @@ const SashingColStyler = ({ rowCol, id, param }) => {
       }
     }
 
+    let onSashingWidths = sashingWidths.map((sashWidth, index) => {
+      return index === id ? (sashWidth = inputSashingWidth) : sashWidth;
+    });
+
     updateSashingWidths(onSashingWidths);
     updateSquares(sashSquares);
     setAppliedSashingWidth(inputSashingWidth);
+  };
+
+  const closeMessage = (event) => {
+    setMessageIsActive(false);
   };
 
   return (
@@ -182,6 +217,12 @@ const SashingColStyler = ({ rowCol, id, param }) => {
               <button className="btn styler-btn" onClick={switchToSquares}>
                 Switch to Squares
               </button>
+            )}
+
+            {messageIsActive ? (
+              <Message text={messageText} closeMessage={closeMessage} />
+            ) : (
+              ""
             )}
 
             <div className="form-title h6">Width</div>

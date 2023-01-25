@@ -254,8 +254,8 @@ const PrintableSquaresGrid = ({ param }) => {
           <HSTDownPaths
             row={squ.row}
             col={squ.col}
-            fillColorLeft={squ.fillHstLup}
-            fillColorRight={squ.fillHstRup}
+            fillColorLeft={squ.fillHstLdown}
+            fillColorRight={squ.fillHstRdown}
             key={rowIndex + "-" + colIndex}
           />
         );

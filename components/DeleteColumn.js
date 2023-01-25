@@ -64,6 +64,9 @@ const DeleteColumn = ({ colId, squareWidth, param }) => {
               : squares[i][k].col;
           squarez[i][k].id =
             squarez[i][k].col > colId - 1 ? i + "-" + k : squarez[i][k].id;
+          // shift anchor location of any BigBlock right of the new column
+          squarez[i][k].bigBlockAnchor =
+            squarez[i][k].bigBlockAnchor !== "" ? squarez[i][k].id : "";
         }
       }
 

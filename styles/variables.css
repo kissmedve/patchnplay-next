@@ -1,5 +1,20 @@
 :root {
   /* Font sizes */
+  --font_64px: 3.2rem;
+  --font_50px: 2.5rem;
+  --font_44px: 2.2rem;
+  --font_42px: 2.1rem;
+  --font_40px: 2rem;
+  --font_36px: 1.8rem;
+  --font_32px: 1.6rem;
+  --font_30px: 1.5rem;
+  --font_28px: 1.4rem;
+  --font_26px: 1.3rem;
+  --font_24px: 1.2rem;
+  --font_22px: 1.1rem;
+  --font_20px: 1rem;
+  --font_18px: 0.9rem;
+  --font_16px: 0.8rem;
   --font_15px: 0.75rem;
   --font_14px: 0.7rem;
   --font_13px: 0.65rem;
@@ -8,5 +23,38 @@
   --font_10px: 0.5rem;
 
   /* colors */
-  --grey_text: #3b4351;
+  /* --grey_text: #3b4351; */
+  --grey-text: #4e4e4e;
+
+  --white: #fff;
+  --stone-000: #efede0;
+  --stone-100: #e5e0d7;
+  --stone-200: #e0d8cc;
+  --stone-300: #d2c9bb;
+  --stone-400: #ccc2b3;
+  --stone-500: #bfb6a6;
+  --stone-600: #aca394;
+  --grey-000: #ecebeb;
+  --grey-100: #e3e3e3;
+  --grey-200: #dddddd;
+  --grey-300: #cccccc;
+  --grey-400: #bfbebe;
+  --grey-500: #afafaf;
+  --grey-600: #a0a0a0;
+  --grey-700: #8f8f8f;
+  --grey-800: #717171;
+  --grey-900: #454545;
+  --grey-logo-type: #4d4d4d;
+  --grey-logo-shape: #333333; /* body and heading type */
+  --blue-heading: #021e5c;
+  --blue-grey-bg: #2f2f3c;
+  --red-logo-shape: #ab2e00;
+  --green-logo-shape: #428100;
+  --yellow: #feb924;
+  --dark-yellow: #e89901;
+  --blue-logo-shape: #11297f;
+  --blue-purple: #45389f;
+  --teal: #3e8880;
+  --red-text: #960215;
+  --red-bg: #dc031f;
 }

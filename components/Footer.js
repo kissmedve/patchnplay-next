@@ -11,10 +11,13 @@ const Footer = () => {
               <Link href="/app">App</Link>
             </li>
             <li>
-              <Link href="/legal">Legal Notice</Link>
+              <Link href="/app?show=demo">Demo</Link>
             </li>
             <li>
-              <Link href="/privacy">Privacy</Link>
+              <Link href="/documentation">Documentation</Link>
+            </li>
+            <li>
+              <Link href="/legal">Legal Notice</Link>
             </li>
           </ul>
         </div>

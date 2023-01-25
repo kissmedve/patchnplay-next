@@ -40526,6 +40526,196 @@ const elementBlocks = [
       },
     ],
   },
+
+  {
+    id: 20305920111,
+    orderId: "3-4x4-mi-0052",
+    rowCol: "4",
+    colours: "3",
+    size: 100,
+    rotated: 0,
+    elements: ["rect", "hst"],
+    squaresColor1: 6,
+    squaresColor2: 2,
+    squaresColor3: 4,
+    trianglesColor1: 4,
+    trianglesColor2: 4,
+    trianglesColor3: 0,
+    paths: [
+      {
+        vertices: [
+          [0, 0],
+          [50, 0],
+          [0, 50],
+        ],
+        fillColor: "color2",
+      },
+      {
+        vertices: [
+          [50, 0],
+          [50, 50],
+          [0, 50],
+        ],
+        fillColor: "color1",
+      },
+      {
+        vertices: [
+          [50, 0],
+          [100, 0],
+          [100, 50],
+          [50, 50],
+        ],
+        fillColor: "color2",
+      },
+      {
+        vertices: [
+          [100, 0],
+          [150, 0],
+          [150, 50],
+          [100, 50],
+        ],
+        fillColor: "color2",
+      },
+      {
+        vertices: [
+          [150, 0],
+          [200, 50],
+          [150, 50],
+        ],
+        fillColor: "color1",
+      },
+      {
+        vertices: [
+          [150, 0],
+          [200, 0],
+          [200, 50],
+        ],
+        fillColor: "color2",
+      },
+      {
+        vertices: [
+          [0, 50],
+          [50, 50],
+          [50, 100],
+          [0, 100],
+        ],
+        fillColor: "color1",
+      },
+      {
+        vertices: [
+          [50, 50],
+          [100, 50],
+          [50, 100],
+        ],
+        fillColor: "color2",
+      },
+      {
+        vertices: [
+          [100, 50],
+          [100, 100],
+          [50, 100],
+        ],
+        fillColor: "color1",
+      },
+      {
+        vertices: [
+          [100, 50],
+          [150, 100],
+          [100, 100],
+        ],
+        fillColor: "color1",
+      },
+      {
+        vertices: [
+          [100, 50],
+          [150, 50],
+          [150, 100],
+        ],
+        fillColor: "color2",
+      },
+      {
+        vertices: [
+          [150, 50],
+          [200, 50],
+          [200, 100],
+          [150, 100],
+        ],
+        fillColor: "color1",
+      },
+      {
+        vertices: [
+          [0, 100],
+          [50, 100],
+          [50, 150],
+          [0, 150],
+        ],
+        fillColor: "color1",
+      },
+      {
+        vertices: [
+          [50, 100],
+          [100, 100],
+          [100, 150],
+          [50, 150],
+        ],
+        fillColor: "color1",
+      },
+      {
+        vertices: [
+          [100, 100],
+          [150, 100],
+          [150, 150],
+          [100, 150],
+        ],
+        fillColor: "color1",
+      },
+      {
+        vertices: [
+          [150, 100],
+          [200, 100],
+          [200, 150],
+          [150, 150],
+        ],
+        fillColor: "color1",
+      },
+      {
+        vertices: [
+          [0, 150],
+          [50, 150],
+          [50, 200],
+          [0, 200],
+        ],
+        fillColor: "color3",
+      },
+      {
+        vertices: [
+          [50, 150],
+          [100, 150],
+          [100, 200],
+          [50, 200],
+        ],
+        fillColor: "color3",
+      },
+      {
+        vertices: [
+          [100, 150],
+          [150, 150],
+          [150, 200],
+          [100, 200],
+        ],
+        fillColor: "color3",
+      },
+      {
+        vertices: [
+          [150, 150],
+          [200, 150],
+          [200, 200],
+          [150, 200],
+        ],
+        fillColor: "color3",
+      },
+    ],
+  },
 ];
 
 export default elementBlocks;

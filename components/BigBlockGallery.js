@@ -8,7 +8,6 @@ const BigBlockGallery = ({ param }) => {
   const { selectedBigBlocks, addBigBlock, deleteBigBlock } = useContext(
     param === "demo" ? BigBlocksContextDemo : BigBlocksContext
   );
-
   // local states
   const [filters, setFilters] = useState({
     rowCol: "",

@@ -25,7 +25,6 @@ const AddRow = ({ rowId, squareWidth, param }) => {
 
   const addRowDown = (rowId) => {
     // don't add row, if the clicked one AND the one below share a BigBlock sitting on them
-
     let squsCovered = 0;
 
     let currentSqus = squares.find((squs, index) => rowId === index);
@@ -35,10 +34,12 @@ const AddRow = ({ rowId, squareWidth, param }) => {
         let coveringBigBlock = insertedBigBlocks.find(
           (ins) => ins.anchorSquare === currentSqu.bigBlockAnchor
         );
-        let covAnchorRow = Number(coveringBigBlock.anchorSquare.split("-")[0]);
+        let covAnchorRow = parseInt(
+          coveringBigBlock.anchorSquare.split("-")[0]
+        );
         if (
           currentSqu.row <
-          covAnchorRow + Number(coveringBigBlock.stretchSquares) - 1
+          covAnchorRow + parseInt(coveringBigBlock.stretchSquares) - 1
         ) {
           squsCovered += 1;
         }
@@ -83,7 +84,7 @@ const AddRow = ({ rowId, squareWidth, param }) => {
           // shift anchor location of any BigBlock below the new row
           if (squarez[i][k].row > rowId && squarez[i][k].covered === true) {
             let anchorSplit = squarez[i][k].bigBlockAnchor.split("-");
-            anchorSplit[0] = Number(anchorSplit[0]) + 1;
+            anchorSplit[0] = parseInt(anchorSplit[0]) + 1;
             let rejoinedAnchor = anchorSplit.join("-");
             squarez[i][k].bigBlockAnchor = rejoinedAnchor;
           }

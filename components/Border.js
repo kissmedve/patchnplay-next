@@ -27,7 +27,6 @@ const Border = ({ param, index = 0 }) => {
     return (
       <div
         className="border"
-        key={currentBorder.pos}
         style={{
           background: `${currentBorder.background}`,
           padding: `${currentBorder.widthTop * borderBaseWidth}px ${

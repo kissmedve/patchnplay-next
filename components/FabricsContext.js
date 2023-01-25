@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from "react";
+import fabricsDataDemo from "../data/initialStateDemoFabrics";
 
 const initialState = {
   fabricWidths: [
@@ -16,41 +17,7 @@ const initialState = {
   calcFabricModalIsOpen: false,
 };
 
-const initialStateDemo = {
-  fabricWidths: [
-    {
-      color: "#e30e0e",
-      fabricWidth: "110",
-    },
-    {
-      color: "#1212d5",
-      fabricWidth: "110",
-    },
-    {
-      color: "#ffe000",
-      fabricWidth: "110",
-    },
-    {
-      color: "#e302e3",
-      fabricWidth: "110",
-    },
-    {
-      color: "#008080",
-      fabricWidth: "110",
-    },
-    {
-      color: "#ff9900",
-      fabricWidth: "110",
-    },
-    {
-      color: "#40e0d0",
-      fabricWidth: "110",
-    },
-  ],
-  fabricSquareWidth: "8.89",
-  seamAllowance: "0.7",
-  calcFabricModalIsOpen: false,
-};
+const initialStateDemo = fabricsDataDemo;
 
 export const FabricsContext = createContext(initialState);
 export const FabricsContextDemo = createContext(initialStateDemo);

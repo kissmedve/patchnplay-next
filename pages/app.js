@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Header from "../components/Header";
@@ -12,9 +12,7 @@ import { StylersProvider } from "../components/StylersContext";
 import { FabricsProvider } from "../components/FabricsContext";
 import { FabricsProviderDemo } from "../components/FabricsContext";
 import Navigation from "../components/Navigation";
-import Footer from "../components/Footer";
 import Squares from "../components/Squares";
-import { SquaresContext } from "../components/SquaresContext";
 
 export default function App() {
   const router = useRouter();
@@ -25,27 +23,26 @@ export default function App() {
       <Head>
         <title>PatchNPlay App</title>
         <meta name="description" content="Create and calculate your quilt" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <ColorsProvider>
         <ColorsProviderDemo>
           <BigBlocksProvider>
             <BigBlocksProviderDemo>
-              <SquaresProvider>
-                <SquaresProviderDemo>
-                  <StylersProvider>
-                    <FabricsProvider>
-                      <FabricsProviderDemo>
+              <FabricsProvider>
+                <FabricsProviderDemo>
+                  <SquaresProvider>
+                    <SquaresProviderDemo>
+                      <StylersProvider>
                         <Header>
                           <Navigation param={show} />
                         </Header>
                         <Squares param={show} />
-                      </FabricsProviderDemo>
-                    </FabricsProvider>
-                  </StylersProvider>
-                </SquaresProviderDemo>
-              </SquaresProvider>
+                      </StylersProvider>
+                    </SquaresProviderDemo>
+                  </SquaresProvider>
+                </FabricsProviderDemo>
+              </FabricsProvider>
             </BigBlocksProviderDemo>
           </BigBlocksProvider>
         </ColorsProviderDemo>

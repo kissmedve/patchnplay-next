@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { SquaresContext, SquaresContextDemo } from "./SquaresContext";
-import { BigBlocksContext } from "./BigBlocksContext";
+import { BigBlocksContext, BigBlocksContextDemo } from "./BigBlocksContext";
 import { ColorsContext, ColorsContextDemo } from "./ColorsContext";
 import { FabricsContext, FabricsContextDemo } from "./FabricsContext";
 import Message from "./Message";
@@ -20,7 +20,9 @@ const UploadJSON = ({ param }) => {
     updateInsertedBigBlocks,
     updateBorders,
   } = useContext(param === "demo" ? SquaresContextDemo : SquaresContext);
-  const { updateBigBlocks } = useContext(BigBlocksContext);
+  const { updateBigBlocks } = useContext(
+    param === "demo" ? BigBlocksContextDemo : BigBlocksContext
+  );
   const { updateColors } = useContext(
     param === "demo" ? ColorsContextDemo : ColorsContext
   );
@@ -61,7 +63,8 @@ const UploadJSON = ({ param }) => {
       updateInsertedBigBlocks(parsedData.insertedBigBlocks);
       updateBorders(parsedData.borders);
 
-      updateBigBlocks(parsedData.selectedBigBlocks);
+      let blocks = parsedData.selectedBigBlocks.map((block) => Number(block));
+      updateBigBlocks(blocks);
 
       updateColors(parsedData.paletteColors);
 

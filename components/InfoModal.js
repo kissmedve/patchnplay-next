@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const InfoModal = () => {
   return (
@@ -7,15 +8,18 @@ const InfoModal = () => {
       <div className="quick-guide">
         {/* overview image */}
         <div className="h5">Quick Guide</div>
-        {/* <div className="explanation">Find more information in the documentation.</div> */}
+        <div className="h6">
+          (Find more information in the{" "}
+          <Link href="/documentation">documentation</Link>.)
+        </div>
 
         <figure className="figure">
           <Image
             className="img-responsive"
             src="/images/pnp-overview-docs.png"
             alt="Overview Buttons"
-            width="370"
-            height="346"
+            width="520"
+            height="515"
           />
         </figure>
 
@@ -24,8 +28,9 @@ const InfoModal = () => {
             <span className="info-number">1</span>Add Column / Add Row
           </div>
           <p>
-            The new column / row is always created right to / below the pressed
-            button.
+            The new column is always created to the right of the &quot;+&quot;
+            button. <br />
+            The new row is always created below the &quot;+&quot; button.
           </p>
         </div>
 
@@ -62,11 +67,19 @@ const InfoModal = () => {
               downwards half square triangles, and color each shape
               individually.
             </li>
-            <li>
-              Replace squares with premade BigBlocks (1 square, 2 x 2 squares, 3
-              x 3 squares, etc.). Color your BigBlock as provided.
-            </li>
+            <li>Replace squares with premade BigBlocks.</li>
           </ol>
+        </div>
+
+        <div className="info-wrapper">
+          <div className="h6">
+            <span className="info-number">5</span>BigBlock Styler
+          </div>
+          <p>
+            Insert a premade BigBlock, size it up to your liking (1 square, 2 x
+            2 squares, 3 x 3 squares, etc.), and color your BigBlock as
+            provided.
+          </p>
         </div>
 
         {/* overview nav image */}
@@ -82,7 +95,7 @@ const InfoModal = () => {
 
         <div className="info-wrapper">
           <div className="h6">
-            <span className="info-number">6</span>Color Picker
+            <span className="info-number">7</span>Color Picker
           </div>
           <p>
             Create your custom color palette to be included in every styling
@@ -92,7 +105,7 @@ const InfoModal = () => {
 
         <div className="info-wrapper">
           <div className="h6">
-            <span className="info-number">7</span>Gallery of predefined blocks
+            <span className="info-number">8</span>Gallery of predefined blocks
           </div>
           <p>
             Create your custom blocks palette to draw from on every BigBlock
@@ -102,14 +115,14 @@ const InfoModal = () => {
 
         <div className="info-wrapper">
           <div className="h6">
-            <span className="info-number">8</span>Preview
+            <span className="info-number">9</span>Preview
           </div>
           <p>View your work fitted to the page.</p>
         </div>
 
         <div className="info-wrapper">
           <div className="h6">
-            <span className="info-number">9</span>Calculate Fabric Requirements
+            <span className="info-number">10</span>Calculate Fabric Requirements
           </div>
           <p>
             depending on your measurements of choice: fabric width for each
@@ -126,14 +139,14 @@ const InfoModal = () => {
 
         <div className="info-wrapper">
           <div className="h6">
-            <span className="info-number">10</span>Upload data file
+            <span className="info-number">11</span>Upload data file
           </div>
           <p>Pick up your work exactly where you left off last time.</p>
         </div>
 
         <div className="info-wrapper">
           <div className="h6">
-            <span className="info-number">11</span>Download data file
+            <span className="info-number">12</span>Download data file
           </div>
           <p>Save your work on your computer.</p>
         </div>

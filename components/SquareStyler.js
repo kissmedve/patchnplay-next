@@ -41,9 +41,10 @@ const SquareStyler = ({
   const [stylerLeftDistance, setStylerLeftDistance] = useState(null);
 
   // measurements height
-  const stylerFullSquHeight = 299; // measured w/o colour bar
-  const stylerHstsHeight = 328; // measured w/o colour bars
-  let paletteRows = Math.ceil(paletteColors.length / 5);
+  const stylerFullSquHeight = 325; // measured with 1 colour bar
+  const stylerHstsHeight = 376; // measured with 2 colour bars
+
+  let paletteRows = Math.ceil(paletteColors.length / 7);
 
   let stylerHeight1 =
     newSquareType === "rect" || newSquareType === "rectSashing"
@@ -55,7 +56,7 @@ const SquareStyler = ({
       : null;
 
   // measurements width
-  const stylerWidth = 209;
+  const stylerWidth = 248;
 
   const setDistanceValues = useCallback(() => {
     let stylBottomDistance = bottomDistance(

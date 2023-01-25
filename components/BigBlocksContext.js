@@ -1,11 +1,10 @@
 import React, { createContext, useReducer } from "react";
+import selectedBigBlocks from "../data/initialStateDemoBigBlocks";
 
 const initialState = {
   selectedBigBlocks: [],
 };
-const initialStateDemo = {
-  selectedBigBlocks: ["0009", "0019"],
-};
+const initialStateDemo = { selectedBigBlocks };
 
 export const BigBlocksContext = createContext(initialState);
 export const BigBlocksContextDemo = createContext(initialStateDemo);

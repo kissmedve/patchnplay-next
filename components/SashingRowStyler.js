@@ -3,6 +3,7 @@ import { StylersContext } from "./StylersContext";
 import { SquaresContext, SquaresContextDemo } from "./SquaresContext";
 import { ColorsContext, ColorsContextDemo } from "./ColorsContext";
 import Palette from "./Palette";
+import Message from "./Message";
 import { bottomDistance } from "../utils/stylerDistance";
 import {
   topOffset,
@@ -36,12 +37,16 @@ const SashingRowStyler = ({ rowCol, id, param }) => {
   const [appliedSashingHeight, setAppliedSashingHeight] = useState(
     sashingHeights[id]
   );
+
+  const [messageIsActive, setMessageIsActive] = useState(false);
+  const [messageText, setMessageText] = useState("");
+
   const [stylerBottomDistance, setStylerBottomDistance] = useState(null);
   const [stylerTopDistance, setStylerTopDistance] = useState(null);
 
   // measurements height
-  const sashingStylerHeight = 296; // measured w/o colour bar
-  let paletteRows = Math.ceil(paletteColors.length / 5);
+  const sashingStylerHeight = 318; // measured with 1 colour bar
+  let paletteRows = Math.ceil(paletteColors.length / 7);
 
   let stylerHeight1 = sashingStylerHeight;
 
@@ -80,16 +85,24 @@ const SashingRowStyler = ({ rowCol, id, param }) => {
     setInputSashingHeight(Number(event.target.value));
   };
 
-  const switchToSashing = (event) => {
-    // check if any square on the row is covered by a BigBlock
-    let isSquCovered = squares
+  // check if any square on the row is covered by a BigBlock
+  const isSquCovered = () => {
+    return squares
       .map((squs) => {
         return squs.some((squ) => squ.row === id && squ.covered === true);
       })
       .some((el) => el === true);
+  };
 
+  const switchToSashing = (event) => {
     // only switch to sashing, if not covered
-    if (!isSquCovered) {
+    if (isSquCovered()) {
+      setMessageText(
+        "No BigBlocks allowed on sashings (except on a sashing cross)."
+      );
+      setMessageIsActive(true);
+      return;
+    } else {
       let squarez = squares;
       for (let i = 0; i < squarez.length; i++) {
         for (let k = 0; k < squarez[0].length; k++) {
@@ -123,6 +136,14 @@ const SashingRowStyler = ({ rowCol, id, param }) => {
       return index === id ? (sashHeight = 1) : sashHeight;
     });
 
+    // if a BigBlock is sitting on a crossing, it has to be removed first
+    if (isSquCovered()) {
+      setMessageText(
+        "Remove the BigBlock first before switching back to squares."
+      );
+      setMessageIsActive(true);
+      return;
+    }
     let squarezz = squares;
     for (let i = 0; i < squarezz.length; i++) {
       for (let k = 0; k < cols.length; k++) {
@@ -149,9 +170,12 @@ const SashingRowStyler = ({ rowCol, id, param }) => {
   };
 
   const applySashingHeight = (event) => {
-    let onSashingHeights = sashingHeights.map((sashHeight, index) => {
-      return index === id ? (sashHeight = inputSashingHeight) : sashHeight;
-    });
+    // if a BigBlock is sitting on a crossing, it has to be removed first
+    if (isSquCovered()) {
+      setMessageText("Remove the BigBlock first before changing the width.");
+      setMessageIsActive(true);
+      return;
+    }
 
     let sashSquares = squares;
     for (let i = 0; i < sashSquares.length; i++) {
@@ -162,9 +186,17 @@ const SashingRowStyler = ({ rowCol, id, param }) => {
       }
     }
 
+    let onSashingHeights = sashingHeights.map((sashHeight, index) => {
+      return index === id ? (sashHeight = inputSashingHeight) : sashHeight;
+    });
+
     updateSashingHeights(onSashingHeights);
     updateSquares(sashSquares);
     setAppliedSashingHeight(inputSashingHeight);
+  };
+
+  const closeMessage = (event) => {
+    setMessageIsActive(false);
   };
 
   return (
@@ -203,6 +235,12 @@ const SashingRowStyler = ({ rowCol, id, param }) => {
               <button className="btn styler-btn" onClick={switchToSquares}>
                 Switch to Squares
               </button>
+            )}
+
+            {messageIsActive ? (
+              <Message text={messageText} closeMessage={closeMessage} />
+            ) : (
+              ""
             )}
 
             <div className="form-title h6">Height</div>

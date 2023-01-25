@@ -569,7 +569,8 @@ export default function collectPieces(
       colorPacks.push(color3PackBigSqu);
     }
     let color1PackBigHst = {};
-    color1PackBigHst.color1 = block.color1;
+    //color1PackBigHst.color1 = block.color1;
+    color1PackBigHst.color = block.color1;
     color1PackBigHst.pieceType = "hst";
     color1PackBigHst.height = (
       fabrSquareWidth * block.sizeFactor +
@@ -585,7 +586,8 @@ export default function collectPieces(
       colorPacks.push(color1PackBigHst);
     }
     let color2PackBigHst = {};
-    color2PackBigHst.color2 = block.color2;
+    //color2PackBigHst.color2 = block.color2;
+    color2PackBigHst.color = block.color2;
     color2PackBigHst.pieceType = "hst";
     color2PackBigHst.height = (
       fabrSquareWidth * block.sizeFactor +
@@ -601,7 +603,8 @@ export default function collectPieces(
       colorPacks.push(color2PackBigHst);
     }
     let color3PackBigHst = {};
-    color3PackBigHst.color3 = block.color3;
+    //color3PackBigHst.color3 = block.color3;
+    color3PackBigHst.color = block.color3;
     color3PackBigHst.pieceType = "hst";
     color3PackBigHst.height = (
       fabrSquareWidth * block.sizeFactor +

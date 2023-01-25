@@ -6,15 +6,16 @@ export default function Privacy() {
     <>
       <Head>
         <title>Privacy</title>
-        <meta name="description" content="Legals / Privacy rules" />
+        <meta name="description" content="Privacy / Data Protection" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />
 
-      <main id="main">
-        <h1>Privacy</h1>
-        <p>blabla</p>
+      <main id="main" class="non-app legal">
+        <div className="container">
+          <h1 className="title">Privacy / Data Protection</h1>
+        </div>
       </main>
     </>
   );

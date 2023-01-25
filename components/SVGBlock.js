@@ -25,10 +25,10 @@ const SVGBlock = ({
             color1={color1}
             color2={color2}
             color3={color3}
-            key={index}
             rotated={rotated}
             rowCol={rowCol}
             squareWidth={squareWidth}
+            key={`${blockId}-${anchorSquare}-${index}`}
           />
         ))
       : null;

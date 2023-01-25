@@ -62,6 +62,9 @@ const DeleteRow = ({ rowId, squareWidth, param }) => {
               : squarez[i][k].row;
           squarez[i][k].id =
             squarez[i][k].row > rowId - 1 ? i + "-" + k : squarez[i][k].id;
+          // shift anchor location of any BigBlock below the new row
+          squarez[i][k].bigBlockAnchor =
+            squarez[i][k].bigBlockAnchor !== "" ? squarez[i][k].id : "";
         }
       }
 
@@ -77,6 +80,7 @@ const DeleteRow = ({ rowId, squareWidth, param }) => {
           anchorSquare: newAnchorSquare,
         };
       });
+      let newInserted = newInsertedBigBlocks.map((block) => block.anchorSquare);
 
       updateSquares(squarez);
       updateRows(newRows);

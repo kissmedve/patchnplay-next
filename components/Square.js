@@ -132,11 +132,12 @@ const Square = ({
         activeBigBlockStyler === id ? (
           <BigBlockStyler
             id={id}
-            key={id}
+            key={`${id}-bbStyler`}
             squareType={"bigBlock"}
             squareWidth={squareWidth}
             sashingCrossed={sashingCrossed}
             sashingWidth={sashingWidth}
+            sashingHeight={sashingHeight}
             covered={covered}
             param={param}
           />
